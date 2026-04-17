@@ -141,6 +141,50 @@ SYSTEM_PROMPT = """당신은 패션/의류 업계 및 글로벌 비즈니스 뉴
 {"articles": [{"id": 0, "importance": "High", "summary_ko": "...", "summary_en": "...", "tags": ["관세", "공급망"]}]}"""
 
 
+VOCAB_PROMPT = """당신은 비즈니스 영어 전문 강사입니다.
+아래 영문 기사들에서 핵심 영단어 및 숙어 20개를 선정하여 JSON 형식으로만 응답하세요. 다른 텍스트는 절대 포함하지 마세요.
+
+선정 기준:
+- 비즈니스/경제/패션 업계에서 자주 쓰이는 표현
+- 단순한 단어보다 숙어, 연어(collocation), 업계 용어 우선
+- 난이도는 중급~고급 수준
+
+응답 형식:
+{"vocabulary": [{"word": "tariff", "type": "n.", "meaning_en": "a tax on imported goods", "meaning_ko": "관세", "example": "The new tariff on apparel raised prices."}]}"""
+
+
+def generate_vocabulary(articles: list[dict]) -> list[dict]:
+    """해외 기사에서 핵심 단어/숙어 20개를 추출합니다."""
+    # 영문 기사만 필터링
+    en_articles = [a for a in articles if a.get("lang") == "en"]
+    if not en_articles:
+        return []
+
+    client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
+    text = "\n\n".join(
+        f"[{a['source']}] {a['title']}\n{a.get('summary', '')}"
+        for a in en_articles[:15]
+    )
+
+    try:
+        message = client.messages.create(
+            model="claude-opus-4-5",
+            max_tokens=2048,
+            system=VOCAB_PROMPT,
+            messages=[{"role": "user", "content": text}]
+        )
+        raw = message.content[0].text.strip()
+        raw = re.sub(r"^```(?:json)?\s*", "", raw)
+        raw = re.sub(r"\s*```$", "", raw)
+        result = json.loads(raw.strip())
+        vocab = result.get("vocabulary", [])
+        print(f"  ✓ 단어장 생성 완료: {len(vocab)}개")
+        return vocab
+    except Exception as e:
+        print(f"  ✗ 단어장 생성 오류: {e}")
+        return []
+
+
 def summarize_articles(articles: list[dict]) -> list[dict]:
     """Claude API로 기사를 요약하고 중요도를 분류합니다."""
     if not articles:
@@ -198,9 +242,45 @@ IMPORTANCE_COLOR = {
     "Low":      ("#6b7280", "#f9fafb"),
 }
 
-def build_html(articles: list[dict], date_range: str) -> str:
+def build_html(articles: list[dict], date_range: str, vocab: list[dict] = None) -> str:
     today = datetime.now().strftime("%B %d, %Y")
     sorted_articles = sorted(articles, key=lambda x: IMPORTANCE_ORDER.get(x.get("importance", "Low"), 3))
+
+    # 단어장 HTML 생성
+    vocab_rows = ""
+    if vocab:
+        for i, v in enumerate(vocab):
+            bg = "#f8fafc" if i % 2 == 0 else "white"
+            vocab_rows += f"""
+            <tr style="background:{bg}">
+              <td class="vw"><strong>{v.get('word','')}</strong> <span class="vtype">{v.get('type','')}</span></td>
+              <td class="vm">{v.get('meaning_en','')}</td>
+              <td class="vm">{v.get('meaning_ko','')}</td>
+              <td class="ve">{v.get('example','')}</td>
+            </tr>"""
+
+    vocab_section = ""
+    if vocab_rows:
+        vocab_section = f"""
+<section class="vocab-section">
+  <div class="section-header">
+    <h2 class="section-title">📖 오늘의 비즈니스 영단어</h2>
+    <span class="section-sub">해외 기사에서 선별한 핵심 표현 {len(vocab)}개</span>
+  </div>
+  <div class="vocab-wrap">
+    <table class="vocab-table">
+      <thead>
+        <tr>
+          <th>단어 / 숙어</th>
+          <th>영문 뜻</th>
+          <th>한글 뜻</th>
+          <th>예문</th>
+        </tr>
+      </thead>
+      <tbody>{vocab_rows}</tbody>
+    </table>
+  </div>
+</section>"""
 
     # 기사 카드 HTML 생성
     cards_html = ""
@@ -285,6 +365,23 @@ def build_html(articles: list[dict], date_range: str) -> str:
 
   /* Footer */
   footer {{ text-align: center; padding: 24px; font-size: 0.78rem; color: #94a3b8; }}
+
+  /* Vocabulary */
+  .vocab-section {{ max-width: 900px; margin: 0 auto 40px; padding: 0 24px; }}
+  .section-header {{ display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; }}
+  .section-title {{ font-size: 1.1rem; font-weight: 700; color: #1e293b; }}
+  .section-sub {{ font-size: 0.78rem; color: #94a3b8; }}
+  .vocab-wrap {{ overflow-x: auto; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }}
+  .vocab-table {{ width: 100%; border-collapse: collapse; background: white; font-size: 0.84rem; }}
+  .vocab-table thead tr {{ background: #0f172a; color: white; }}
+  .vocab-table th {{ padding: 10px 14px; text-align: left; font-weight: 600; font-size: 0.78rem; letter-spacing: 0.04em; }}
+  .vocab-table td {{ padding: 9px 14px; vertical-align: top; border-bottom: 1px solid #f1f5f9; color: #334155; }}
+  .vw {{ min-width: 130px; color: #0f172a !important; }}
+  .vtype {{ font-size: 0.72rem; color: #94a3b8; font-style: italic; }}
+  .vm {{ min-width: 160px; }}
+  .ve {{ color: #64748b !important; font-style: italic; font-size: 0.8rem; }}
+  .articles-section {{ max-width: 900px; margin: 0 auto; padding: 0 24px; }}
+  .section-header-news {{ display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; }}
 </style>
 </head>
 <body>
@@ -303,6 +400,8 @@ def build_html(articles: list[dict], date_range: str) -> str:
     {filter_buttons}
   </div>
 </div>
+
+{vocab_section}
 
 <div class="articles" id="articles">
   {cards_html}
@@ -349,7 +448,6 @@ def main():
 
     # 2. AI 요약
     print("2. Claude AI 요약 및 중요도 분류 중...")
-    # 배치로 나눠서 처리 (API 토큰 한계 고려)
     batch_size = 10
     enriched = []
     for i in range(0, len(all_articles), batch_size):
@@ -357,10 +455,15 @@ def main():
         enriched.extend(summarize_articles(batch))
     print(f"   총 {len(enriched)}개 요약 완료\n")
 
-    # 3. HTML 생성
-    print("3. HTML 생성 중...")
+    # 3. 단어장 생성
+    print("3. 비즈니스 영단어 추출 중...")
+    vocab = generate_vocabulary(all_articles)
+    print()
+
+    # 4. HTML 생성
+    print("4. HTML 생성 중...")
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
-    html = build_html(enriched, date_range)
+    html = build_html(enriched, date_range, vocab)
     OUTPUT_FILE.write_text(html, encoding="utf-8")
     print(f"   ✓ 저장: {OUTPUT_FILE}\n")
 
