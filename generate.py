@@ -19,12 +19,16 @@ from pathlib import Path
 # ─── 설정 ──────────────────────────────────────────────────────────────────────
 
 SOURCES = [
-    {"name": "한국경제",   "name_en": "Korea Economic Daily", "url": "https://www.hankyung.com/feed/economy",                "lang": "ko"},
-    {"name": "매일경제",   "name_en": "Maeil Business News",  "url": "https://www.mk.co.kr/rss/30000001/",                   "lang": "ko"},
-    {"name": "Reuters",    "name_en": "Reuters",              "url": "https://feeds.reuters.com/reuters/businessNews.rss",    "lang": "en"},
-    {"name": "Bloomberg",  "name_en": "Bloomberg",            "url": "https://feeds.bloomberg.com/markets/news.rss",          "lang": "en"},
-    {"name": "WWD",        "name_en": "WWD",                  "url": "https://wwd.com/feed/",                                 "lang": "en"},
-    {"name": "BoF",        "name_en": "Business of Fashion",  "url": "https://www.businessoffashion.com/feed/news/",          "lang": "en"},
+    # 국내 경제
+    {"name": "한국경제",   "name_en": "Korea Economic Daily", "url": "https://www.hankyung.com/feed/economy",                              "lang": "ko"},
+    {"name": "매일경제",   "name_en": "Maeil Business News",  "url": "https://www.mk.co.kr/rss/30000001/",                                 "lang": "ko"},
+    # 글로벌 경제 (무료)
+    {"name": "AP News",    "name_en": "AP News",              "url": "https://rsshub.app/apnews/topics/business-news",                      "lang": "en"},
+    {"name": "Yahoo Fin",  "name_en": "Yahoo Finance",        "url": "https://finance.yahoo.com/news/rssindex",                             "lang": "en"},
+    # 패션/의류 (무료)
+    {"name": "WWD",        "name_en": "WWD",                  "url": "https://wwd.com/feed/",                                               "lang": "en"},
+    {"name": "Vogue Biz",  "name_en": "Vogue Business",       "url": "https://www.voguebusiness.com/feed",                                  "lang": "en"},
+    {"name": "FashionNet", "name_en": "FashionNetwork",       "url": "https://us.fashionnetwork.com/rss/news,1.xml",                        "lang": "en"},
 ]
 
 MAX_ARTICLES_PER_SOURCE = 5   # 소스당 최대 기사 수
