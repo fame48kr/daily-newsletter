@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Newsletter | April 17, 2026</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f8fafc; color: #1e293b; }
+
+  /* Header */
+  .hero { background: #0f172a; color: white; padding: 48px 24px; text-align: right; }
+  .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -0.02em; }
+  .hero .date { margin-top: 8px; opacity: 0.6; font-size: 0.9rem; letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* Controls */
+  .controls { max-width: 900px; margin: 32px auto 0; padding: 0 24px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .lang-toggle { display: flex; background: white; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; }
+  .lang-toggle button { padding: 8px 20px; border: none; background: transparent; cursor: pointer; font-size: 0.85rem; font-weight: 600; color: #64748b; transition: all .2s; }
+  .lang-toggle button.active { background: #0f172a; color: white; }
+  .filter-wrap { display: flex; gap: 8px; flex-wrap: wrap; }
+  .filter-btn { padding: 7px 16px; border: 1.5px solid #e2e8f0; background: white; border-radius: 20px; cursor: pointer; font-size: 0.82rem; font-weight: 600; color: #64748b; transition: all .2s; }
+  .filter-btn.active { border-color: var(--imp-color, #0f172a); background: var(--imp-color, #0f172a); color: white; }
+  .filter-btn[data-filter="all"].active { background: #0f172a; border-color: #0f172a; color: white; }
+  .cnt { opacity: 0.8; }
+
+  /* Cards */
+  .articles { max-width: 900px; margin: 24px auto 48px; padding: 0 24px; display: flex; flex-direction: column; gap: 16px; }
+  .card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.06); transition: box-shadow .2s; }
+  .card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.1); }
+  .card.hidden { display: none; }
+  .card-header { padding: 16px 20px 12px; }
+  .card-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .source-badge { font-size: 0.75rem; font-weight: 700; background: #0f172a; color: white; padding: 2px 10px; border-radius: 20px; letter-spacing: 0.05em; }
+  .importance-badge { font-size: 0.72rem; font-weight: 700; border: 1.5px solid; padding: 1px 9px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .card-title { font-size: 0.95rem; font-weight: 700; line-height: 1.4; }
+  .card-title a { color: inherit; text-decoration: none; }
+  .card-title a:hover { text-decoration: underline; }
+  .tags { margin-top: 8px; display: flex; gap: 6px; flex-wrap: wrap; }
+  .tag { font-size: 0.72rem; background: #f1f5f9; color: #475569; padding: 2px 10px; border-radius: 20px; }
+  .card-body { padding: 12px 20px 16px; border-top: 1px solid #f1f5f9; }
+  .summary { font-size: 0.88rem; line-height: 1.65; color: #475569; }
+  .hidden { display: none; }
+
+  /* Footer */
+  footer { text-align: center; padding: 24px; font-size: 0.78rem; color: #94a3b8; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>Daily Newsletter</h1>
+  <div class="date">APRIL 17, 2026</div>
+</div>
+
+<div class="controls">
+  <div class="lang-toggle">
+    <button class="active" onclick="setLang('ko')">한국어</button>
+    <button onclick="setLang('en')">English</button>
+  </div>
+  <div class="filter-wrap">
+    <button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="Medium" style="--imp-color:#2563eb">Medium <span class="cnt">10</span></button>
+  </div>
+</div>
+
+<div class="articles" id="articles">
+  
+        <div class="card" data-importance="Medium">
+          <div class="card-header" style="border-left: 4px solid #2563eb; background: #eff6ff;">
+            <div class="card-meta">
+              <span class="source-badge">Bloomberg</span>
+              <span class="importance-badge" style="color:#2563eb; border-color:#2563eb;">Medium</span>
+            </div>
+            <h3 class="card-title">
+              <a href="https://www.bloomberg.com/news/articles/2026-04-16/stock-market-today-dow-s-p-live-updates" target="_blank" rel="noopener">Record Stock Rally Stalls as Peace Deal Awaited: Markets Wrap</a>
+            </h3>
+            <div class="tags"></div>
+          </div>
+          <div class="card-body">
+            <p class="summary ko">A record-breaking rally in global equities stalled in Asia as investors trimmed positions ahead of the weekend while awaiting progress on extending the US-Iran ceasefire.</p>
+            <p class="summary en hidden">A record-breaking rally in global equities stalled in Asia as investors trimmed positions ahead of the weekend while awaiting progress on extending the US-Iran ceasefire.</p>
+          </div>
+        </div>
+        <div class="card" data-importance="Medium">
+          <div class="card-header" style="border-left: 4px solid #2563eb; background: #eff6ff;">
+            <div class="card-meta">
+              <span class="source-badge">Bloomberg</span>
+              <span class="importance-badge" style="color:#2563eb; border-color:#2563eb;">Medium</span>
+            </div>
+            <h3 class="card-title">
+              <a href="https://www.bloomberg.com/news/articles/2026-04-17/japan-unveils-name-for-scorching-days-as-heat-waves-intensify" target="_blank" rel="noopener">Japan Has a New Name for Scorching Hot Days</a>
+            </h3>
+            <div class="tags"></div>
+          </div>
+          <div class="card-body">
+            <p class="summary ko">Japan’s weather agency has formally adopted a name for sizzling-hot days ahead of what is set to be another scorcher of a summer.</p>
+            <p class="summary en hidden">Japan’s weather agency has formally adopted a name for sizzling-hot days ahead of what is set to be another scorcher of a summer.</p>
+          </div>
+        </div>
+        <div class="card" data-importance="Medium">
+          <div class="card-header" style="border-left: 4px solid #2563eb; background: #eff6ff;">
+            <div class="card-meta">
+              <span class="source-badge">Bloomberg</span>
+              <span class="importance-badge" style="color:#2563eb; border-color:#2563eb;">Medium</span>
+            </div>
+            <h3 class="card-title">
+              <a href="https://www.bloomberg.com/news/articles/2026-04-17/india-s-rupee-is-asia-s-biggest-gainer-on-oil-fx-window-report" target="_blank" rel="noopener">India’s Rupee Is Asia’s Biggest Gainer on Oil FX Window Report</a>
+            </h3>
+            <div class="tags"></div>
+          </div>
+          <div class="card-body">
+            <p class="summary ko">The Indian rupee led gains in Asia after a report that the central bank has asked state-owned oil refiners to route their dollar purchases through a special credit facility.</p>
+            <p class="summary en hidden">The Indian rupee led gains in Asia after a report that the central bank has asked state-owned oil refiners to route their dollar purchases through a special credit facility.</p>
+          </div>
+        </div>
+        <div class="card" data-importance="Medium">
+          <div class="card-header" style="border-left: 4px solid #2563eb; background: #eff6ff;">
+            <div class="card-meta">
+              <span class="source-badge">Bloomberg</span>
+              <span class="importance-badge" style="color:#2563eb; border-color:#2563eb;">Medium</span>
+            </div>
+            <h3 class="card-title">
+              <a href="https://www.bloomberg.com/news/articles/2026-04-17/malaysia-s-iaq-group-is-said-to-consider-1-billion-ringgit-ipo" target="_blank" rel="noopener">Malaysia’s IAQ Group Is Said to Consider 1 Billion Ringgit IPO</a>
+            </h3>
+            <div class="tags"></div>
+          </div>
+          <div class="card-body">
+            <p class="summary ko">IAQ Group is considering an initial public offering in Kuala Lumpur to raise about 1 billion ringgit ($253 million), according to people with knowledge of the matter.</p>
+            <p class="summary en hidden">IAQ Group is considering an initial public offering in Kuala Lumpur to raise about 1 billion ringgit ($253 million), according to people with knowledge of the matter.</p>
+          </div>
+        </div>
+        <div class="card" data-importance="Medium">
+          <div class="card-header" style="border-left: 4px solid #2563eb; background: #eff6ff;">
+            <div class="card-meta">
+              <span class="source-badge">Bloomberg</span>
+              <span class="importance-badge" style="color:#2563eb; border-color:#2563eb;">Medium</span>
+            </div>
+            <h3 class="card-title">
+              <a href="https://www.bloomberg.com/news/articles/2026-04-17/ecb-to-hike-rates-in-june-as-2026-inflation-jumps-survey-shows" target="_blank" rel="noopener">ECB to Hike Rates in June as 2026 Inflation Jumps, Survey Shows</a>
+            </h3>
+            <div class="tags"></div>
+          </div>
+          <div class="card-body">
+            <p class="summary ko">The European Central Bank will raise interest rates in June as the Iran war drives inflation higher this year, a Bloomberg survey showed.</p>
+            <p class="summary en hidden">The European Central Bank will raise interest rates in June as the Iran war drives inflation higher this year, a Bloomberg survey showed.</p>
+          </div>
+        </div>
+        <div class="card" data-importance="Medium">
+          <div class="card-header" style="border-left: 4px solid #2563eb; background: #eff6ff;">
+            <div class="card-meta">
+              <span class="source-badge">WWD</span>
+              <span class="importance-badge" style="color:#2563eb; border-color:#2563eb;">Medium</span>
+            </div>
+            <h3 class="card-title">
+              <a href="https://wwd.com/?p=1238693988" target="_blank" rel="noopener">The 2025 Beauty Top 100: Skin Care’s Big Shift</a>
+            </h3>
+            <div class="tags"></div>
+          </div>
+          <div class="card-body">
+            <p class="summary ko">The 2025 Beauty Top 100 paints a clear picture of the transformation of the treatment category.</p>
+            <p class="summary en hidden">The 2025 Beauty Top 100 paints a clear picture of the transformation of the treatment category.</p>
+          </div>
+        </div>
+        <div class="card" data-importance="Medium">
+          <div class="card-header" style="border-left: 4px solid #2563eb; background: #eff6ff;">
+            <div class="card-meta">
+              <span class="source-badge">WWD</span>
+              <span class="importance-badge" style="color:#2563eb; border-color:#2563eb;">Medium</span>
+            </div>
+            <h3 class="card-title">
+              <a href="https://wwd.com/?p=1238694005" target="_blank" rel="noopener">The 2025 Top 100: Beauty’s Year of Transformation</a>
+            </h3>
+            <div class="tags"></div>
+          </div>
+          <div class="card-body">
+            <p class="summary ko">As manufacturers seek to adapt to a fast-moving and volatile macro environment, corporate restructurings have become commonplace across geographies and categories.</p>
+            <p class="summary en hidden">As manufacturers seek to adapt to a fast-moving and volatile macro environment, corporate restructurings have become commonplace across geographies and categories.</p>
+          </div>
+        </div>
+        <div class="card" data-importance="Medium">
+          <div class="card-header" style="border-left: 4px solid #2563eb; background: #eff6ff;">
+            <div class="card-meta">
+              <span class="source-badge">WWD</span>
+              <span class="importance-badge" style="color:#2563eb; border-color:#2563eb;">Medium</span>
+            </div>
+            <h3 class="card-title">
+              <a href="https://wwd.com/?p=1238694536" target="_blank" rel="noopener">The 2025 Top 100: Riding the K-Craze</a>
+            </h3>
+            <div class="tags"></div>
+          </div>
+          <div class="card-body">
+            <p class="summary ko">Tracking the skyrocketing sales of K-beauty as South Korean-based skin care brands continue to soar in popularity.</p>
+            <p class="summary en hidden">Tracking the skyrocketing sales of K-beauty as South Korean-based skin care brands continue to soar in popularity.</p>
+          </div>
+        </div>
+        <div class="card" data-importance="Medium">
+          <div class="card-header" style="border-left: 4px solid #2563eb; background: #eff6ff;">
+            <div class="card-meta">
+              <span class="source-badge">WWD</span>
+              <span class="importance-badge" style="color:#2563eb; border-color:#2563eb;">Medium</span>
+            </div>
+            <h3 class="card-title">
+              <a href="https://wwd.com/?p=1238912330" target="_blank" rel="noopener">Ralph Lauren to Open First Home Store in Milan, Unveils Fall Collection</a>
+            </h3>
+            <div class="tags"></div>
+          </div>
+          <div class="card-body">
+            <p class="summary ko">The home collection, that will be shown during Milan Design Week, will transport guests to the designer's cinematic world.</p>
+            <p class="summary en hidden">The home collection, that will be shown during Milan Design Week, will transport guests to the designer's cinematic world.</p>
+          </div>
+        </div>
+        <div class="card" data-importance="Medium">
+          <div class="card-header" style="border-left: 4px solid #2563eb; background: #eff6ff;">
+            <div class="card-meta">
+              <span class="source-badge">WWD</span>
+              <span class="importance-badge" style="color:#2563eb; border-color:#2563eb;">Medium</span>
+            </div>
+            <h3 class="card-title">
+              <a href="https://wwd.com/?p=1238918011" target="_blank" rel="noopener">Nike Looks to Make a Splash in the Design World With John Hoke and A Magazine Curated By</a>
+            </h3>
+            <div class="tags"></div>
+          </div>
+          <div class="card-body">
+            <p class="summary ko">Releasing during Salone del Mobile.Milano, the project features two prototype chairs inspired by Nike's signature Air cushioning system.</p>
+            <p class="summary en hidden">Releasing during Salone del Mobile.Milano, the project features two prototype chairs inspired by Nike's signature Air cushioning system.</p>
+          </div>
+        </div>
+</div>
+
+<footer>Generated April 17, 2026 · Powered by Claude AI</footer>
+
+<script>
+function setLang(lang) {
+  document.querySelectorAll('.lang-toggle button').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.summary.ko').forEach(el => el.classList.toggle('hidden', lang !== 'ko'));
+  document.querySelectorAll('.summary.en').forEach(el => el.classList.toggle('hidden', lang !== 'en'));
+}
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.card').forEach(card => {
+      card.classList.toggle('hidden', filter !== 'all' && card.dataset.importance !== filter);
+    });
+  });
+});
+</script>
+</body>
+</html>
