@@ -19,12 +19,12 @@ from pathlib import Path
 # ─── 설정 ──────────────────────────────────────────────────────────────────────
 
 SOURCES = [
-    {"name": "한국경제",   "name_en": "Korea Economic Daily", "url": "https://feeds.hankyung.com/hankyung/economy.xml",     "lang": "ko"},
-    {"name": "매일경제",   "name_en": "Maeil Business News",  "url": "https://rss.mk.co.kr/rss/30000001/",                  "lang": "ko"},
-    {"name": "Reuters",    "name_en": "Reuters",              "url": "https://feeds.reuters.com/reuters/businessNews",       "lang": "en"},
-    {"name": "Bloomberg",  "name_en": "Bloomberg",            "url": "https://feeds.bloomberg.com/markets/news.rss",         "lang": "en"},
-    {"name": "WWD",        "name_en": "WWD",                  "url": "https://wwd.com/feed/",                                "lang": "en"},
-    {"name": "BoF",        "name_en": "Business of Fashion",  "url": "https://www.businessoffashion.com/rss/news",           "lang": "en"},
+    {"name": "한국경제",   "name_en": "Korea Economic Daily", "url": "https://www.hankyung.com/feed/economy",                "lang": "ko"},
+    {"name": "매일경제",   "name_en": "Maeil Business News",  "url": "https://www.mk.co.kr/rss/30000001/",                   "lang": "ko"},
+    {"name": "Reuters",    "name_en": "Reuters",              "url": "https://feeds.reuters.com/reuters/businessNews.rss",    "lang": "en"},
+    {"name": "Bloomberg",  "name_en": "Bloomberg",            "url": "https://feeds.bloomberg.com/markets/news.rss",          "lang": "en"},
+    {"name": "WWD",        "name_en": "WWD",                  "url": "https://wwd.com/feed/",                                 "lang": "en"},
+    {"name": "BoF",        "name_en": "Business of Fashion",  "url": "https://www.businessoffashion.com/feed/news/",          "lang": "en"},
 ]
 
 MAX_ARTICLES_PER_SOURCE = 5   # 소스당 최대 기사 수
@@ -157,6 +157,11 @@ def summarize_articles(articles: list[dict]) -> list[dict]:
             messages=[{"role": "user", "content": articles_text}]
         )
         raw = message.content[0].text.strip()
+        # 마크다운 코드블록 제거 (```json ... ``` 형태로 올 때)
+        raw = re.sub(r"^```(?:json)?\s*", "", raw)
+        raw = re.sub(r"\s*```$", "", raw)
+        raw = raw.strip()
+        print(f"  AI 응답 미리보기: {raw[:100]}")
         result = json.loads(raw)
 
         # AI 결과를 원본 기사에 병합
