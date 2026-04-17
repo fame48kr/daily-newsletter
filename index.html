@@ -44,6 +44,23 @@
 
   /* Footer */
   footer { text-align: center; padding: 24px; font-size: 0.78rem; color: #94a3b8; }
+
+  /* Vocabulary */
+  .vocab-section { max-width: 900px; margin: 0 auto 40px; padding: 0 24px; }
+  .section-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; }
+  .section-title { font-size: 1.1rem; font-weight: 700; color: #1e293b; }
+  .section-sub { font-size: 0.78rem; color: #94a3b8; }
+  .vocab-wrap { overflow-x: auto; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+  .vocab-table { width: 100%; border-collapse: collapse; background: white; font-size: 0.84rem; }
+  .vocab-table thead tr { background: #0f172a; color: white; }
+  .vocab-table th { padding: 10px 14px; text-align: left; font-weight: 600; font-size: 0.78rem; letter-spacing: 0.04em; }
+  .vocab-table td { padding: 9px 14px; vertical-align: top; border-bottom: 1px solid #f1f5f9; color: #334155; }
+  .vw { min-width: 130px; color: #0f172a !important; }
+  .vtype { font-size: 0.72rem; color: #94a3b8; font-style: italic; }
+  .vm { min-width: 160px; }
+  .ve { color: #64748b !important; font-style: italic; font-size: 0.8rem; }
+  .articles-section { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+  .section-header-news { display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; }
 </style>
 </head>
 <body>
@@ -59,9 +76,150 @@
     <button onclick="setLang('en')">English</button>
   </div>
   <div class="filter-wrap">
-    <button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="High" style="--imp-color:#d97706">High <span class="cnt">3</span></button><button class="filter-btn" data-filter="Medium" style="--imp-color:#2563eb">Medium <span class="cnt">5</span></button><button class="filter-btn" data-filter="Low" style="--imp-color:#6b7280">Low <span class="cnt">12</span></button>
+    <button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="High" style="--imp-color:#d97706">High <span class="cnt">2</span></button><button class="filter-btn" data-filter="Medium" style="--imp-color:#2563eb">Medium <span class="cnt">4</span></button><button class="filter-btn" data-filter="Low" style="--imp-color:#6b7280">Low <span class="cnt">14</span></button>
   </div>
 </div>
+
+
+<section class="vocab-section">
+  <div class="section-header">
+    <h2 class="section-title">📖 오늘의 비즈니스 영단어</h2>
+    <span class="section-sub">해외 기사에서 선별한 핵심 표현 20개</span>
+  </div>
+  <div class="vocab-wrap">
+    <table class="vocab-table">
+      <thead>
+        <tr>
+          <th>단어 / 숙어</th>
+          <th>영문 뜻</th>
+          <th>한글 뜻</th>
+          <th>예문</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr style="background:#f8fafc">
+              <td class="vw"><strong>face closure</strong> <span class="vtype">phr.</span></td>
+              <td class="vm">to be confronted with the prospect of shutting down operations</td>
+              <td class="vm">폐점에 직면하다</td>
+              <td class="ve">The 36-year-old retailer shuts down website as all stores face closure.</td>
+            </tr>
+            <tr style="background:white">
+              <td class="vw"><strong>persistent surplus</strong> <span class="vtype">n.</span></td>
+              <td class="vm">a continuous excess of supply over demand</td>
+              <td class="vm">지속적인 공급 과잉</td>
+              <td class="ve">Persistent global surpluses sink sugar prices.</td>
+            </tr>
+            <tr style="background:#f8fafc">
+              <td class="vw"><strong>waiver</strong> <span class="vtype">n.</span></td>
+              <td class="vm">official permission to ignore a rule or requirement</td>
+              <td class="vm">면제, 적용 제외</td>
+              <td class="ve">Trump's waiver of Jones Act fails to cool oil prices.</td>
+            </tr>
+            <tr style="background:white">
+              <td class="vw"><strong>cool prices</strong> <span class="vtype">phr.</span></td>
+              <td class="vm">to reduce or stabilize rising prices</td>
+              <td class="vm">가격을 안정시키다</td>
+              <td class="ve">The policy waiver fails to cool oil prices.</td>
+            </tr>
+            <tr style="background:#f8fafc">
+              <td class="vw"><strong>hit new lows</strong> <span class="vtype">phr.</span></td>
+              <td class="vm">to reach the lowest point or value recorded</td>
+              <td class="vm">신저점을 기록하다</td>
+              <td class="ve">Lucid keeps hitting new lows in the stock market.</td>
+            </tr>
+            <tr style="background:white">
+              <td class="vw"><strong>give up on</strong> <span class="vtype">phr.</span></td>
+              <td class="vm">to abandon hope or stop trying with something</td>
+              <td class="vm">~을 포기하다</td>
+              <td class="ve">Should you buy LCID stock or give up?</td>
+            </tr>
+            <tr style="background:#f8fafc">
+              <td class="vw"><strong>bet on</strong> <span class="vtype">phr.</span></td>
+              <td class="vm">to invest in or rely on something with confidence</td>
+              <td class="vm">~에 베팅하다, 기대를 걸다</td>
+              <td class="ve">Lowe's bets AI won't be able to fix a hole in your roof.</td>
+            </tr>
+            <tr style="background:white">
+              <td class="vw"><strong>treatment category</strong> <span class="vtype">n.</span></td>
+              <td class="vm">a product segment focused on therapeutic or corrective benefits</td>
+              <td class="vm">트리트먼트 카테고리 (기능성 제품군)</td>
+              <td class="ve">The report paints a clear picture of the transformation of the treatment category.</td>
+            </tr>
+            <tr style="background:#f8fafc">
+              <td class="vw"><strong>corporate restructuring</strong> <span class="vtype">n.</span></td>
+              <td class="vm">reorganization of a company's structure, operations, or finances</td>
+              <td class="vm">기업 구조조정</td>
+              <td class="ve">Corporate restructurings have become commonplace across geographies and categories.</td>
+            </tr>
+            <tr style="background:white">
+              <td class="vw"><strong>macro environment</strong> <span class="vtype">n.</span></td>
+              <td class="vm">external economic and political factors affecting business</td>
+              <td class="vm">거시적 환경</td>
+              <td class="ve">Manufacturers seek to adapt to a fast-moving and volatile macro environment.</td>
+            </tr>
+            <tr style="background:#f8fafc">
+              <td class="vw"><strong>volatile</strong> <span class="vtype">adj.</span></td>
+              <td class="vm">liable to change rapidly and unpredictably</td>
+              <td class="vm">변동성이 큰, 불안정한</td>
+              <td class="ve">The macro environment remains fast-moving and volatile.</td>
+            </tr>
+            <tr style="background:white">
+              <td class="vw"><strong>commonplace</strong> <span class="vtype">adj.</span></td>
+              <td class="vm">occurring frequently; not unusual</td>
+              <td class="vm">흔한, 일상적인</td>
+              <td class="ve">Corporate restructurings have become commonplace across geographies.</td>
+            </tr>
+            <tr style="background:#f8fafc">
+              <td class="vw"><strong>skyrocketing sales</strong> <span class="vtype">n.</span></td>
+              <td class="vm">sales that increase rapidly and dramatically</td>
+              <td class="vm">급증하는 매출</td>
+              <td class="ve">Tracking the skyrocketing sales of K-beauty brands.</td>
+            </tr>
+            <tr style="background:white">
+              <td class="vw"><strong>soar in popularity</strong> <span class="vtype">phr.</span></td>
+              <td class="vm">to rise quickly in public favor or demand</td>
+              <td class="vm">인기가 급상승하다</td>
+              <td class="ve">South Korean-based skin care brands continue to soar in popularity.</td>
+            </tr>
+            <tr style="background:#f8fafc">
+              <td class="vw"><strong>unveil</strong> <span class="vtype">v.</span></td>
+              <td class="vm">to reveal or introduce something new to the public</td>
+              <td class="vm">공개하다, 선보이다</td>
+              <td class="ve">Ralph Lauren unveils fall collection in Milan.</td>
+            </tr>
+            <tr style="background:white">
+              <td class="vw"><strong>transport guests to</strong> <span class="vtype">phr.</span></td>
+              <td class="vm">to immerse visitors in a particular atmosphere or experience</td>
+              <td class="vm">(분위기로) 안내하다, 몰입시키다</td>
+              <td class="ve">The collection will transport guests to the designer's cinematic world.</td>
+            </tr>
+            <tr style="background:#f8fafc">
+              <td class="vw"><strong>make a splash</strong> <span class="vtype">idm.</span></td>
+              <td class="vm">to attract a lot of attention or create a strong impression</td>
+              <td class="vm">주목을 끌다, 센세이션을 일으키다</td>
+              <td class="ve">Nike looks to make a splash in the design world.</td>
+            </tr>
+            <tr style="background:white">
+              <td class="vw"><strong>prototype</strong> <span class="vtype">n.</span></td>
+              <td class="vm">an original model on which later versions are based</td>
+              <td class="vm">프로토타입, 시제품</td>
+              <td class="ve">The project features two prototype chairs inspired by Nike's Air cushioning.</td>
+            </tr>
+            <tr style="background:#f8fafc">
+              <td class="vw"><strong>signature</strong> <span class="vtype">adj.</span></td>
+              <td class="vm">distinctive and characteristic of a brand or person</td>
+              <td class="vm">시그니처의, 대표적인</td>
+              <td class="ve">The chairs are inspired by Nike's signature Air cushioning system.</td>
+            </tr>
+            <tr style="background:white">
+              <td class="vw"><strong>curated by</strong> <span class="vtype">phr.</span></td>
+              <td class="vm">carefully selected and organized by a specialist</td>
+              <td class="vm">~가 큐레이션한</td>
+              <td class="ve">The magazine is curated by designer John Hoke.</td>
+            </tr></tbody>
+    </table>
+  </div>
+</section>
 
 <div class="articles" id="articles">
   
@@ -74,11 +232,11 @@
             <h3 class="card-title">
               <a href="https://wwd.com/?p=1238694005" target="_blank" rel="noopener">The 2025 Top 100: Beauty’s Year of Transformation</a>
             </h3>
-            <div class="tags"><span class="tag">뷰티</span><span class="tag">구조조정</span><span class="tag">시장변화</span></div>
+            <div class="tags"><span class="tag">뷰티산업</span><span class="tag">구조조정</span><span class="tag">글로벌트렌드</span></div>
           </div>
           <div class="card-body">
-            <p class="summary ko">2025년 뷰티 업계가 변혁의 해를 맞이하며 기업 구조조정이 지역과 카테고리를 막론하고 일반화되고 있습니다. 급변하는 거시 환경에 대응하는 업계 동향을 분석합니다.</p>
-            <p class="summary en hidden">The beauty industry faces a year of transformation in 2025, with corporate restructurings becoming commonplace across geographies and categories. Manufacturers are adapting to a fast-moving and volatile macro environment.</p>
+            <p class="summary ko">2025년 뷰티 업계는 급변하는 거시환경에 적응하기 위해 전 세계적으로 대대적인 기업 구조조정이 일반화되고 있습니다. 카테고리와 지역을 막론한 변화의 해입니다.</p>
+            <p class="summary en hidden">Beauty manufacturers are undergoing corporate restructurings across geographies and categories as they adapt to a fast-moving and volatile macro environment in 2025.</p>
           </div>
         </div>
         <div class="card" data-importance="High">
@@ -90,59 +248,11 @@
             <h3 class="card-title">
               <a href="https://wwd.com/?p=1238694536" target="_blank" rel="noopener">The 2025 Top 100: Riding the K-Craze</a>
             </h3>
-            <div class="tags"><span class="tag">K뷰티</span><span class="tag">스킨케어</span><span class="tag">글로벌트렌드</span></div>
+            <div class="tags"><span class="tag">K뷰티</span><span class="tag">한국화장품</span><span class="tag">글로벌확장</span></div>
           </div>
           <div class="card-body">
-            <p class="summary ko">K-뷰티의 급격한 매출 성장세를 추적합니다. 한국 스킨케어 브랜드들이 글로벌 시장에서 지속적으로 인기를 얻으며 급성장하고 있습니다.</p>
-            <p class="summary en hidden">Tracking the skyrocketing sales of K-beauty as South Korean skincare brands continue to soar in global popularity. The K-beauty craze shows no signs of slowing down.</p>
-          </div>
-        </div>
-        <div class="card" data-importance="High">
-          <div class="card-header" style="border-left: 4px solid #d97706; background: #fffbeb;">
-            <div class="card-meta">
-              <span class="source-badge">WWD</span>
-              <span class="importance-badge" style="color:#d97706; border-color:#d97706;">High</span>
-            </div>
-            <h3 class="card-title">
-              <a href="https://wwd.com/?p=1238912330" target="_blank" rel="noopener">Ralph Lauren to Open First Home Store in Milan, Unveils Fall Collection</a>
-            </h3>
-            <div class="tags"><span class="tag">랄프로렌</span><span class="tag">밀라노</span><span class="tag">홈컬렉션</span></div>
-          </div>
-          <div class="card-body">
-            <p class="summary ko">랄프로렌이 밀라노에 첫 홈 스토어를 오픈하고 가을 컬렉션을 공개합니다. 밀라노 디자인 위크 기간에 선보이는 홈 컬렉션은 디자이너의 시네마틱한 세계를 담습니다.</p>
-            <p class="summary en hidden">Ralph Lauren will open its first home store in Milan and unveil its fall collection. The home collection, presented during Milan Design Week, will showcase the designer's cinematic world.</p>
-          </div>
-        </div>
-        <div class="card" data-importance="Medium">
-          <div class="card-header" style="border-left: 4px solid #2563eb; background: #eff6ff;">
-            <div class="card-meta">
-              <span class="source-badge">한국경제</span>
-              <span class="importance-badge" style="color:#2563eb; border-color:#2563eb;">Medium</span>
-            </div>
-            <h3 class="card-title">
-              <a href="https://www.hankyung.com/article/202604012893i" target="_blank" rel="noopener">시진핑도 반했다…'500조 시장' 노린 중국의 무서운 기술 [차이나 워치]</a>
-            </h3>
-            <div class="tags"><span class="tag">중국</span><span class="tag">기술투자</span><span class="tag">글로벌시장</span></div>
-          </div>
-          <div class="card-body">
-            <p class="summary ko">중국이 500조 규모의 신흥 기술 시장을 목표로 공격적인 투자와 기술 개발을 진행 중이다. 시진핑 주석의 관심 속에 관련 산업이 급성장하고 있다.</p>
-            <p class="summary en hidden">China is aggressively investing in emerging technology markets worth 500 trillion won. The industry is rapidly growing under President Xi Jinping's attention.</p>
-          </div>
-        </div>
-        <div class="card" data-importance="Medium">
-          <div class="card-header" style="border-left: 4px solid #2563eb; background: #eff6ff;">
-            <div class="card-meta">
-              <span class="source-badge">매일경제</span>
-              <span class="importance-badge" style="color:#2563eb; border-color:#2563eb;">Medium</span>
-            </div>
-            <h3 class="card-title">
-              <a href="https://www.mk.co.kr/news/stock/12020010" target="_blank" rel="noopener">신현송 한은 총재 후보 ‘스테이블코인 공존’ 선언...규제 판도 바뀌나[엠블록레터]</a>
-            </h3>
-            <div class="tags"><span class="tag">가상자산</span><span class="tag">금융정책</span><span class="tag">규제</span></div>
-          </div>
-          <div class="card-body">
-            <p class="summary ko">신현송 한국은행 총재 후보자가 인사청문회에서 스테이블코인과의 공존 가능성을 시사하며 전향적 태도를 보였다. 기존 부정적 입장에서 변화된 규제 방향이 주목된다.</p>
-            <p class="summary en hidden">Bank of Korea governor nominee Shin Hyun-song showed a forward-looking stance on coexistence with stablecoins at his confirmation hearing. A shift from previous negative positions signals potential regulatory changes.</p>
+            <p class="summary ko">K-뷰티의 판매가 급상승하며 한국 스킨케어 브랜드들이 글로벌 시장에서 인기를 지속하고 있습니다. 2025년 뷰티 톱 100에서 주목받는 트렌드입니다.</p>
+            <p class="summary en hidden">K-beauty sales are skyrocketing as South Korean skincare brands continue to soar in global popularity, becoming a key trend in the 2025 Top 100.</p>
           </div>
         </div>
         <div class="card" data-importance="Medium">
@@ -157,8 +267,8 @@
             <div class="tags"><span class="tag">소매업</span><span class="tag">폐점</span><span class="tag">구조조정</span></div>
           </div>
           <div class="card-body">
-            <p class="summary ko">36년 역사의 소매업체가 웹사이트를 폐쇄하고 모든 매장 폐점을 앞두고 있습니다. 소매업계의 지속적인 구조조정 흐름을 보여주는 사례입니다.</p>
-            <p class="summary en hidden">A 36-year-old retailer has shut down its website as all stores face closure. This reflects the ongoing restructuring trend in the retail industry.</p>
+            <p class="summary ko">36년 역사의 소매업체가 웹사이트를 폐쇄하고 전 매장 철수를 앞두고 있습니다. 소매업계의 지속적인 구조조정 흐름을 보여주는 사례입니다.</p>
+            <p class="summary en hidden">A 36-year-old retailer is shutting down its website as all stores face closure. This reflects the ongoing restructuring trend in the retail industry.</p>
           </div>
         </div>
         <div class="card" data-importance="Medium">
@@ -170,11 +280,27 @@
             <h3 class="card-title">
               <a href="https://wwd.com/?p=1238693988" target="_blank" rel="noopener">The 2025 Beauty Top 100: Skin Care’s Big Shift</a>
             </h3>
-            <div class="tags"><span class="tag">뷰티</span><span class="tag">스킨케어</span><span class="tag">트렌드</span></div>
+            <div class="tags"><span class="tag">스킨케어</span><span class="tag">뷰티트렌드</span><span class="tag">화장품</span></div>
           </div>
           <div class="card-body">
-            <p class="summary ko">2025년 뷰티 Top 100 리포트에서 스킨케어 카테고리의 대대적인 변화가 확인되었습니다. 트리트먼트 카테고리의 전환을 명확히 보여줍니다.</p>
-            <p class="summary en hidden">The 2025 Beauty Top 100 report reveals a major shift in the skincare category. It clearly illustrates the transformation of the treatment category.</p>
+            <p class="summary ko">2025년 뷰티 톱 100에서 스킨케어 카테고리의 큰 변화가 감지되었습니다. 트리트먼트 카테고리의 변혁이 뚜렷하게 나타나고 있습니다.</p>
+            <p class="summary en hidden">The 2025 Beauty Top 100 reveals a significant shift in the skincare category, with clear transformation in the treatment segment.</p>
+          </div>
+        </div>
+        <div class="card" data-importance="Medium">
+          <div class="card-header" style="border-left: 4px solid #2563eb; background: #eff6ff;">
+            <div class="card-meta">
+              <span class="source-badge">WWD</span>
+              <span class="importance-badge" style="color:#2563eb; border-color:#2563eb;">Medium</span>
+            </div>
+            <h3 class="card-title">
+              <a href="https://wwd.com/?p=1238912330" target="_blank" rel="noopener">Ralph Lauren to Open First Home Store in Milan, Unveils Fall Collection</a>
+            </h3>
+            <div class="tags"><span class="tag">랄프로렌</span><span class="tag">홈컬렉션</span><span class="tag">밀라노</span></div>
+          </div>
+          <div class="card-body">
+            <p class="summary ko">랄프로렌이 밀라노에 첫 홈 스토어를 오픈하고 밀라노 디자인 위크에서 가을 컬렉션을 공개합니다. 디자이너의 영화적 세계관을 담은 홈 컬렉션입니다.</p>
+            <p class="summary en hidden">Ralph Lauren is opening its first home store in Milan and unveiling its fall home collection during Milan Design Week, showcasing the designer's cinematic world.</p>
           </div>
         </div>
         <div class="card" data-importance="Medium">
@@ -189,8 +315,8 @@
             <div class="tags"><span class="tag">나이키</span><span class="tag">디자인</span><span class="tag">밀라노</span></div>
           </div>
           <div class="card-body">
-            <p class="summary ko">나이키가 살로네 델 모빌레 밀라노 기간에 디자인 프로젝트를 공개합니다. 나이키의 시그니처 에어 쿠셔닝 시스템에서 영감받은 두 개의 프로토타입 의자를 선보입니다.</p>
-            <p class="summary en hidden">Nike aims to make a splash in the design world with a project releasing during Salone del Mobile.Milano. The project features two prototype chairs inspired by Nike's signature Air cushioning system.</p>
+            <p class="summary ko">나이키가 존 호크와 A Magazine Curated By와 협업해 밀라노 살로네에서 디자인 프로젝트를 선보입니다. 에어 쿠셔닝 시스템에서 영감받은 프로토타입 의자가 공개됩니다.</p>
+            <p class="summary en hidden">Nike is making a splash in the design world with John Hoke and A Magazine Curated By, releasing prototype chairs inspired by Nike's Air cushioning system during Salone del Mobile.Milano.</p>
           </div>
         </div>
         <div class="card" data-importance="Low">
@@ -202,11 +328,11 @@
             <h3 class="card-title">
               <a href="https://www.hankyung.com/article/2026041784147" target="_blank" rel="noopener">'이럴 바엔 한우 먹지'…미국산 소고기 가격 보고 '깜짝'</a>
             </h3>
-            <div class="tags"><span class="tag">식품</span><span class="tag">물가</span><span class="tag">수입</span></div>
+            <div class="tags"><span class="tag">식품가격</span><span class="tag">수입육류</span><span class="tag">소비트렌드</span></div>
           </div>
           <div class="card-body">
-            <p class="summary ko">미국산 소고기 가격이 한우와 비슷한 수준으로 상승하여 소비자들이 놀라고 있다. 수입육 가격 인상으로 국내산 대비 가격 메리트가 줄어들고 있다.</p>
-            <p class="summary en hidden">US beef prices have risen to levels similar to Korean domestic beef, surprising consumers. The price advantage of imported meat over domestic products is diminishing.</p>
+            <p class="summary ko">미국산 소고기 가격이 상승하여 소비자들이 한우와 비교하며 놀라움을 표현하고 있다. 수입 육류 가격 변동이 소비자 선택에 영향을 미치고 있다.</p>
+            <p class="summary en hidden">US beef prices have risen, surprising consumers who are now comparing them with Korean beef prices. Import meat price fluctuations are affecting consumer choices.</p>
           </div>
         </div>
         <div class="card" data-importance="Low">
@@ -218,11 +344,27 @@
             <h3 class="card-title">
               <a href="https://www.hankyung.com/article/202604178239i" target="_blank" rel="noopener">[인사이트 칼럼] 메모리 초격차 이후, 한국 반도체의 다음 시험대</a>
             </h3>
-            <div class="tags"><span class="tag">반도체</span><span class="tag">기술</span><span class="tag">산업</span></div>
+            <div class="tags"><span class="tag">반도체</span><span class="tag">메모리</span><span class="tag">산업전략</span></div>
           </div>
           <div class="card-body">
-            <p class="summary ko">한국 반도체 산업이 메모리 분야 초격차 이후 새로운 시험대에 직면했다는 분석이다. 비메모리 등 차세대 분야에서의 경쟁력 확보가 과제로 제시되고 있다.</p>
-            <p class="summary en hidden">Analysis suggests Korea's semiconductor industry faces new challenges after achieving dominance in memory chips. Securing competitiveness in next-generation fields like non-memory is identified as a key task.</p>
+            <p class="summary ko">한국 반도체 산업의 메모리 분야 초격차 전략 이후 다음 도전과제를 분석하는 칼럼이다. 반도체 산업의 미래 경쟁력 확보 방안을 논의한다.</p>
+            <p class="summary en hidden">This column analyzes the next challenges for Korea's semiconductor industry after achieving a super-gap in memory. It discusses strategies for securing future competitiveness.</p>
+          </div>
+        </div>
+        <div class="card" data-importance="Low">
+          <div class="card-header" style="border-left: 4px solid #6b7280; background: #f9fafb;">
+            <div class="card-meta">
+              <span class="source-badge">한국경제</span>
+              <span class="importance-badge" style="color:#6b7280; border-color:#6b7280;">Low</span>
+            </div>
+            <h3 class="card-title">
+              <a href="https://www.hankyung.com/article/202604012893i" target="_blank" rel="noopener">시진핑도 반했다…'500조 시장' 노린 중국의 무서운 기술 [차이나 워치]</a>
+            </h3>
+            <div class="tags"><span class="tag">중국</span><span class="tag">기술개발</span><span class="tag">시장동향</span></div>
+          </div>
+          <div class="card-body">
+            <p class="summary ko">중국이 500조원 규모의 신기술 시장을 목표로 적극적인 기술 개발에 나서고 있다. 시진핑 주석도 관심을 보이는 중국의 기술 발전 동향을 다룬다.</p>
+            <p class="summary en hidden">China is aggressively developing technologies targeting a 500 trillion won market. The article covers China's technological advancement that has caught President Xi Jinping's attention.</p>
           </div>
         </div>
         <div class="card" data-importance="Low">
@@ -237,8 +379,8 @@
             <div class="tags"><span class="tag">항공</span><span class="tag">서비스</span><span class="tag">수상</span></div>
           </div>
           <div class="card-body">
-            <p class="summary ko">대한항공이 WTCE 2026에서 기내 서비스 부문 13개 상을 수상하며 글로벌 서비스 품질을 인정받았다. 항공사 서비스 경쟁력을 다시 한번 입증했다.</p>
-            <p class="summary en hidden">Korean Air won 13 awards in the cabin service category at WTCE 2026, demonstrating global service quality recognition. This reaffirms the airline's service competitiveness.</p>
+            <p class="summary ko">대한항공이 WTCE 2026에서 기내 서비스 부문 13개 상을 수상했다. 항공사의 서비스 품질 우수성이 국제적으로 인정받았다.</p>
+            <p class="summary en hidden">Korean Air won 13 awards in the cabin service category at WTCE 2026. The airline's service quality excellence has been internationally recognized.</p>
           </div>
         </div>
         <div class="card" data-importance="Low">
@@ -250,11 +392,11 @@
             <h3 class="card-title">
               <a href="https://www.hankyung.com/article/202604178235i" target="_blank" rel="noopener">日전력반도체 업계 재편…4사의 '동상이몽' [일본 산업 리포트]</a>
             </h3>
-            <div class="tags"><span class="tag">일본</span><span class="tag">반도체</span><span class="tag">업계재편</span></div>
+            <div class="tags"><span class="tag">일본</span><span class="tag">전력반도체</span><span class="tag">산업재편</span></div>
           </div>
           <div class="card-body">
-            <p class="summary ko">일본 전력반도체 업계가 4개 주요 기업 간 재편 움직임을 보이고 있다. 각사마다 다른 전략적 목표를 가지고 경쟁과 협력을 모색하고 있다.</p>
-            <p class="summary en hidden">Japan's power semiconductor industry is undergoing reorganization among four major companies. Each company is exploring competition and cooperation with different strategic goals.</p>
+            <p class="summary ko">일본 전력반도체 업계가 재편되고 있으며 4개 주요 기업들이 각기 다른 전략을 추구하고 있다. 일본 반도체 산업의 구조 변화를 분석한다.</p>
+            <p class="summary en hidden">Japan's power semiconductor industry is restructuring with four major companies pursuing different strategies. The article analyzes structural changes in Japan's semiconductor industry.</p>
           </div>
         </div>
         <div class="card" data-importance="Low">
@@ -264,13 +406,13 @@
               <span class="importance-badge" style="color:#6b7280; border-color:#6b7280;">Low</span>
             </div>
             <h3 class="card-title">
-              <a href="https://www.mk.co.kr/news/culture/12020025" target="_blank" rel="noopener">“두바이도 가능해” 지드래곤 소속사, 현지 법인 차렸다</a>
+              <a href="https://www.mk.co.kr/news/society/12020045" target="_blank" rel="noopener">오월드 탈출 ‘늑구’ 열흘 만에 집으로 돌아갔다…시민들 열렬한 환영</a>
             </h3>
-            <div class="tags"><span class="tag">엔터테인먼트</span><span class="tag">중동진출</span><span class="tag">AI</span></div>
+            <div class="tags"><span class="tag">동물원</span><span class="tag">늑대포획</span><span class="tag">대전</span></div>
           </div>
           <div class="card-body">
-            <p class="summary ko">지드래곤 소속사 갤럭시코퍼레이션이 국내 엔터테인먼트 기업 최초로 두바이에 법인을 설립했다. UAE 왕실과 AI·로봇 엔터테크 사업을 본격화할 계획이다.</p>
-            <p class="summary en hidden">Galaxy Corporation, G-Dragon's agency, became the first Korean entertainment company to establish a subsidiary in Dubai. They plan to expand AI and robot entertainment technology business with UAE royalty.</p>
+            <p class="summary ko">대전 오월드에서 탈출한 늑대 '늑구'가 10일 만에 포획되어 무사히 돌아왔다. 시민들이 열렬히 환영했다.</p>
+            <p class="summary en hidden">The wolf 'Neukgu' that escaped from Daejeon O-World was captured after 10 days and safely returned. Citizens welcomed the wolf enthusiastically.</p>
           </div>
         </div>
         <div class="card" data-importance="Low">
@@ -280,13 +422,13 @@
               <span class="importance-badge" style="color:#6b7280; border-color:#6b7280;">Low</span>
             </div>
             <h3 class="card-title">
-              <a href="https://www.mk.co.kr/news/society/12020017" target="_blank" rel="noopener">70대 노모 입막고 폭행해 숨지게 한 남매…1심 징역 7년·3년</a>
+              <a href="https://www.mk.co.kr/news/stock/12020043" target="_blank" rel="noopener">‘반도체 물류’ 세미티에스, NH스팩29호와 합병상장 승인</a>
             </h3>
-            <div class="tags"><span class="tag">사건</span><span class="tag">판결</span><span class="tag">범죄</span></div>
+            <div class="tags"><span class="tag">반도체</span><span class="tag">물류</span><span class="tag">스팩합병</span></div>
           </div>
           <div class="card-body">
-            <p class="summary ko">70대 어머니를 지속 폭행해 사망에 이르게 한 40대 남매가 1심에서 각각 징역 7년과 3년을 선고받았다. 법원은 살인 고의를 인정하기 어렵다며 폭행치사로 판단했다.</p>
-            <p class="summary en hidden">A pair of siblings in their 40s who repeatedly assaulted their mother in her 70s, causing her death, were sentenced to 7 and 3 years in prison respectively. The court ruled it as death by assault rather than murder.</p>
+            <p class="summary ko">반도체 자동 물류 시스템 기업 세미티에스가 NH스팩29호와의 합병상장을 승인받았다. 5월 20일 합병 후 다음 달 상장 예정이다.</p>
+            <p class="summary en hidden">SemiTES, a semiconductor automated logistics system company, received approval for merger listing with NH SPAC 29. The merger is scheduled for May 20 with listing next month.</p>
           </div>
         </div>
         <div class="card" data-importance="Low">
@@ -296,13 +438,13 @@
               <span class="importance-badge" style="color:#6b7280; border-color:#6b7280;">Low</span>
             </div>
             <h3 class="card-title">
-              <a href="https://www.mk.co.kr/news/business/12020008" target="_blank" rel="noopener">현대로템, 철도 효율 높이는 에너지 절감 기술 개발</a>
+              <a href="https://www.mk.co.kr/news/stock/12020041" target="_blank" rel="noopener">‘상위 1% 투자자의 픽’은 달바글로벌·하이닉스…2차전지·금융주는 매도 [주식 초고수는 지금]</a>
             </h3>
-            <div class="tags"><span class="tag">철도</span><span class="tag">에너지절감</span><span class="tag">기술개발</span></div>
+            <div class="tags"><span class="tag">투자</span><span class="tag">주식</span><span class="tag">포트폴리오</span></div>
           </div>
           <div class="card-body">
-            <p class="summary ko">현대로템이 코레일, 한국교통대와 함께 철도 차량의 에너지 소비를 줄이는 지능형 시스템을 개발했다. 구간별 최적 속도 설정으로 불필요한 가감속을 줄이는 기술이다.</p>
-            <p class="summary en hidden">Hyundai Rotem developed an intelligent energy-saving system for railway vehicles in collaboration with Korail and Korea National University of Transportation. The technology reduces unnecessary acceleration and deceleration through optimal speed settings.</p>
+            <p class="summary ko">상위 1% 투자자들이 달바글로벌과 SK하이닉스를 매수하고 2차전지와 금융주는 매도하고 있다. 투자 고수들의 포트폴리오 변화를 분석한다.</p>
+            <p class="summary en hidden">Top 1% investors are buying Dalba Global and SK Hynix while selling secondary battery and financial stocks. The article analyzes portfolio changes of expert investors.</p>
           </div>
         </div>
         <div class="card" data-importance="Low">
@@ -312,13 +454,29 @@
               <span class="importance-badge" style="color:#6b7280; border-color:#6b7280;">Low</span>
             </div>
             <h3 class="card-title">
-              <a href="https://www.mk.co.kr/news/business/12020006" target="_blank" rel="noopener">DN솔루션즈, 방산기업 LDAS에 적층제조 장비 공급</a>
+              <a href="https://www.mk.co.kr/news/stock/12020038" target="_blank" rel="noopener">조선·엔진주 뜨겁네…18% 급등 한화엔진, 신고가 경신 [매경 자이앤트]</a>
             </h3>
-            <div class="tags"><span class="tag">방산</span><span class="tag">3D프린팅</span><span class="tag">제조</span></div>
+            <div class="tags"><span class="tag">조선</span><span class="tag">한화엔진</span><span class="tag">주가급등</span></div>
           </div>
           <div class="card-body">
-            <p class="summary ko">DN솔루션즈가 방산기업 LDAS에 금속 3D 프린팅 적층제조 장비를 공급했다. 총기 등 방산 시제품 제작 및 양산 속도를 단축할 수 있을 것으로 기대된다.</p>
-            <p class="summary en hidden">DN Solutions supplied metal 3D printing additive manufacturing equipment to defense company LDAS. This is expected to reduce prototype production and mass production time for defense products including firearms.</p>
+            <p class="summary ko">한화엔진이 저속엔진 수익성 개선과 신사업 확장 기대감에 18% 급등하며 신고가를 기록했다. 조선 및 엔진 관련주가 강세를 보이고 있다.</p>
+            <p class="summary en hidden">Hanwha Engine surged 18% to a record high on expectations for low-speed engine profitability improvement and new business expansion. Shipbuilding and engine stocks are showing strength.</p>
+          </div>
+        </div>
+        <div class="card" data-importance="Low">
+          <div class="card-header" style="border-left: 4px solid #6b7280; background: #f9fafb;">
+            <div class="card-meta">
+              <span class="source-badge">매일경제</span>
+              <span class="importance-badge" style="color:#6b7280; border-color:#6b7280;">Low</span>
+            </div>
+            <h3 class="card-title">
+              <a href="https://www.mk.co.kr/news/politics/12020037" target="_blank" rel="noopener">민주, 6·3지선 ‘영업 인재 1호’에 전태진 변호사…울산 남갑 전략 공천할듯</a>
+            </h3>
+            <div class="tags"><span class="tag">정치</span><span class="tag">민주당</span><span class="tag">지방선거</span></div>
+          </div>
+          <div class="card-body">
+            <p class="summary ko">더불어민주당이 6·3 지방선거 전략공천 1호로 전태진 변호사를 선정했다. 울산 남갑에 전략 공천할 예정이다.</p>
+            <p class="summary en hidden">The Democratic Party selected lawyer Jeon Tae-jin as the first strategic nomination for the June 3 local elections. Strategic nomination is planned for Ulsan Nam-gap.</p>
           </div>
         </div>
         <div class="card" data-importance="Low">
@@ -328,13 +486,13 @@
               <span class="importance-badge" style="color:#6b7280; border-color:#6b7280;">Low</span>
             </div>
             <h3 class="card-title">
-              <a href="https://finance.yahoo.com/markets/stocks/articles/tectonic-shift-ai-underway-amd-180326285.html" target="_blank" rel="noopener">A Tectonic Shift in AI Is Underway and AMD Stock Is No Longer a ‘Discount’ Competitor to Nvidia. It’s a Bet on the Future.</a>
+              <a href="https://finance.yahoo.com/markets/commodities/articles/persistent-global-surpluses-sink-sugar-183421160.html" target="_blank" rel="noopener">Persistent Global Surpluses Sink Sugar Prices</a>
             </h3>
-            <div class="tags"><span class="tag">AI</span><span class="tag">반도체</span><span class="tag">투자</span></div>
+            <div class="tags"><span class="tag">원자재</span><span class="tag">설탕</span><span class="tag">가격하락</span></div>
           </div>
           <div class="card-body">
-            <p class="summary ko">AMD 주식이 더 이상 Nvidia의 저가 경쟁자가 아닌 AI의 미래에 대한 투자로 평가받고 있습니다. AI 반도체 시장의 구조적 변화를 다룹니다.</p>
-            <p class="summary en hidden">AMD stock is no longer seen as a discount competitor to Nvidia but as a bet on the future of AI. The article covers structural changes in the AI semiconductor market.</p>
+            <p class="summary ko">글로벌 설탕 공급 과잉이 지속되면서 설탕 가격이 하락하고 있습니다. 원자재 시장 동향을 반영합니다.</p>
+            <p class="summary en hidden">Persistent global sugar surpluses are driving down sugar prices. This reflects commodity market trends.</p>
           </div>
         </div>
         <div class="card" data-importance="Low">
@@ -344,13 +502,13 @@
               <span class="importance-badge" style="color:#6b7280; border-color:#6b7280;">Low</span>
             </div>
             <h3 class="card-title">
-              <a href="https://finance.yahoo.com/markets/stocks/articles/palantir-stock-plunges-32-time-180349539.html" target="_blank" rel="noopener">As Palantir Stock Plunges 32%, Is It Time to Buy the Dip in PLTR?</a>
+              <a href="https://finance.yahoo.com/sectors/energy/articles/trump-waiver-jones-act-fails-183000553.html" target="_blank" rel="noopener">Trump’s Waiver Of Jones Act Fails To Cool Oil Prices</a>
             </h3>
-            <div class="tags"><span class="tag">주식</span><span class="tag">기술주</span></div>
+            <div class="tags"><span class="tag">유가</span><span class="tag">에너지</span><span class="tag">정책</span></div>
           </div>
           <div class="card-body">
-            <p class="summary ko">팔란티어 주가가 32% 급락한 가운데 매수 기회 여부를 분석합니다. 기술주 투자 관련 일반 정보성 기사입니다.</p>
-            <p class="summary en hidden">Analysis of whether it's time to buy Palantir stock after a 32% plunge. This is a general information article about tech stock investment.</p>
+            <p class="summary ko">트럼프의 존스법 면제 조치에도 불구하고 유가가 진정되지 않고 있습니다. 에너지 시장의 불확실성이 지속됩니다.</p>
+            <p class="summary en hidden">Trump's waiver of the Jones Act has failed to cool oil prices. Energy market uncertainty continues.</p>
           </div>
         </div>
         <div class="card" data-importance="Low">
@@ -360,13 +518,13 @@
               <span class="importance-badge" style="color:#6b7280; border-color:#6b7280;">Low</span>
             </div>
             <h3 class="card-title">
-              <a href="https://finance.yahoo.com/personal-finance/banking/article/how-do-banks-make-money-192517968.html" target="_blank" rel="noopener">How do banks make money?</a>
+              <a href="https://finance.yahoo.com/markets/stocks/articles/lucid-keep-hitting-lows-buy-182811222.html" target="_blank" rel="noopener">Lucid Keep Hitting New Lows: Should You Buy LCID Stock or Give Up?</a>
             </h3>
-            <div class="tags"><span class="tag">금융</span><span class="tag">은행</span></div>
+            <div class="tags"><span class="tag">전기차</span><span class="tag">주식</span><span class="tag">투자</span></div>
           </div>
           <div class="card-body">
-            <p class="summary ko">은행의 수익 창출 방식을 설명하는 금융 교육 콘텐츠입니다. 패션/의류 업계와 직접적 관련이 없습니다.</p>
-            <p class="summary en hidden">Educational content explaining how banks make money. Not directly related to fashion/apparel industry.</p>
+            <p class="summary ko">루시드 모터스 주가가 계속 신저점을 기록하고 있습니다. 전기차 업계 투자자들의 관심이 필요한 상황입니다.</p>
+            <p class="summary en hidden">Lucid Motors stock keeps hitting new lows, raising questions about whether investors should buy or exit. EV market challenges continue.</p>
           </div>
         </div>
         <div class="card" data-importance="Low">
@@ -376,13 +534,13 @@
               <span class="importance-badge" style="color:#6b7280; border-color:#6b7280;">Low</span>
             </div>
             <h3 class="card-title">
-              <a href="https://finance.yahoo.com/markets/crypto/articles/bitdeer-technologies-self-mined-bitcoin-181500787.html" target="_blank" rel="noopener">Bitdeer Technologies’ Self-Mined Bitcoin Increased 480% In March</a>
+              <a href="https://finance.yahoo.com/news/lowes-bets-ai-wont-be-able-to-fix-a-hole-in-your-roof-182722355.html" target="_blank" rel="noopener">Lowe's bets AI won't be able to fix a hole in your roof</a>
             </h3>
-            <div class="tags"><span class="tag">암호화폐</span><span class="tag">비트코인</span></div>
+            <div class="tags"><span class="tag">AI</span><span class="tag">홈인테리어</span><span class="tag">소매업</span></div>
           </div>
           <div class="card-body">
-            <p class="summary ko">비트디어 테크놀로지스의 자체 채굴 비트코인이 3월에 480% 증가했습니다. 암호화폐 관련 기사로 패션 업계와 무관합니다.</p>
-            <p class="summary en hidden">Bitdeer Technologies' self-mined Bitcoin increased 480% in March. Cryptocurrency-related article unrelated to fashion industry.</p>
+            <p class="summary ko">로우스가 AI가 지붕 수리 같은 물리적 작업은 대체할 수 없을 것이라는 전략적 관점을 제시했습니다.</p>
+            <p class="summary en hidden">Lowe's bets that AI won't be able to replace physical repair work like fixing roofs, highlighting their strategic positioning.</p>
           </div>
         </div>
 </div>
