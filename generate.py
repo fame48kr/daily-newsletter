@@ -154,21 +154,39 @@ VOCAB_PROMPT = """당신은 비즈니스 영어 전문 강사입니다.
 
 
 GEMINI_MODEL = "gemini-1.5-flash"
-GEMINI_URL = "https://generativelanguage.googleapis.com/v1/models/{model}:generateContent"
+GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
 
 
 def _gemini(system: str, user: str) -> str:
     """Gemini REST API 직접 호출."""
     api_key = os.environ.get("GEMINI_API_KEY", "")
+    if not api_key:
+        raise ValueError("GEMINI_API_KEY가 설정되지 않았습니다.")
+
     url = GEMINI_URL.format(model=GEMINI_MODEL) + f"?key={api_key}"
     payload = {
         "system_instruction": {"parts": [{"text": system}]},
         "contents": [{"parts": [{"text": user}]}],
-        "generationConfig": {"temperature": 0.3}
+        "generationConfig": {
+            "temperature": 0.3,
+            "responseMimeType": "application/json"
+        },
+        "safetySettings": [
+            {"category": "HARM_CATEGORY_HARASSMENT",        "threshold": "BLOCK_NONE"},
+            {"category": "HARM_CATEGORY_HATE_SPEECH",       "threshold": "BLOCK_NONE"},
+            {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_NONE"},
+            {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_NONE"},
+        ]
     }
     resp = req_lib.post(url, json=payload, timeout=60)
-    resp.raise_for_status()
+    if resp.status_code != 200:
+        print(f"  API 오류 상세: {resp.text}")
+        resp.raise_for_status()
+
     data = resp.json()
+    if "candidates" not in data or not data["candidates"][0].get("content"):
+        raise Exception("Gemini 응답 없음 (필터링 또는 모델 오류)")
+
     raw = data["candidates"][0]["content"]["parts"][0]["text"].strip()
     raw = re.sub(r"^```(?:json)?\s*", "", raw)
     raw = re.sub(r"\s*```$", "", raw)
@@ -445,7 +463,7 @@ def main():
 
     # 2. AI 요약
     print("2. Claude AI 요약 및 중요도 분류 중...")
-    batch_size = 10
+    batch_size = 5
     enriched = []
     for i in range(0, len(all_articles), batch_size):
         batch = all_articles[i:i+batch_size]
