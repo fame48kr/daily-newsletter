@@ -468,7 +468,11 @@ def main():
     for i in range(0, len(all_articles), batch_size):
         batch = all_articles[i:i+batch_size]
         enriched.extend(summarize_articles(batch))
-    print(f"   총 {len(enriched)}개 요약 완료\n")
+    print(f"   총 {len(enriched)}개 요약 완료")
+
+    # 중요도 높은 순으로 상위 10개만 선택
+    enriched = sorted(enriched, key=lambda x: IMPORTANCE_ORDER.get(x.get("importance", "Low"), 3))[:10]
+    print(f"   → 상위 10개 선별 완료\n")
 
     # 3. 단어장 생성
     print("3. 비즈니스 영단어 추출 중...")
