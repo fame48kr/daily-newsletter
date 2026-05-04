@@ -158,7 +158,7 @@ def _gemini(system: str, user: str) -> str:
     """Gemini API 공통 호출 헬퍼."""
     client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
     response = client.models.generate_content(
-        model="gemini-2.0-flash",
+        model="gemini-2.5-flash-preview-04-17",
         contents=user,
         config=types.GenerateContentConfig(
             system_instruction=system,
