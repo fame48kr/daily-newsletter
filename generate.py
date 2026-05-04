@@ -7,8 +7,7 @@ Daily Newsletter Generator
 """
 
 import feedparser
-from google import genai
-from google.genai import types
+import requests as req_lib
 import json
 import os
 import re
@@ -154,21 +153,23 @@ VOCAB_PROMPT = """당신은 비즈니스 영어 전문 강사입니다.
 {"vocabulary": [{"word": "tariff", "type": "n.", "meaning_en": "a tax on imported goods", "meaning_ko": "관세", "example": "The new tariff on apparel raised prices."}]}"""
 
 
+GEMINI_MODEL = "gemini-1.5-flash-latest"
+GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+
+
 def _gemini(system: str, user: str) -> str:
-    """Gemini API 공통 호출 헬퍼."""
-    client = genai.Client(
-        api_key=os.environ.get("GEMINI_API_KEY"),
-        http_options={"api_version": "v1alpha"}
-    )
-    response = client.models.generate_content(
-        model="gemini-2.5-flash-preview-04-17",
-        contents=user,
-        config=types.GenerateContentConfig(
-            system_instruction=system,
-            temperature=0.3,
-        )
-    )
-    raw = response.text.strip()
+    """Gemini REST API 직접 호출."""
+    api_key = os.environ.get("GEMINI_API_KEY", "")
+    url = GEMINI_URL.format(model=GEMINI_MODEL) + f"?key={api_key}"
+    payload = {
+        "system_instruction": {"parts": [{"text": system}]},
+        "contents": [{"parts": [{"text": user}]}],
+        "generationConfig": {"temperature": 0.3}
+    }
+    resp = req_lib.post(url, json=payload, timeout=60)
+    resp.raise_for_status()
+    data = resp.json()
+    raw = data["candidates"][0]["content"]["parts"][0]["text"].strip()
     raw = re.sub(r"^```(?:json)?\s*", "", raw)
     raw = re.sub(r"\s*```$", "", raw)
     return raw.strip()
