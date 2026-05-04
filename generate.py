@@ -156,7 +156,10 @@ VOCAB_PROMPT = """당신은 비즈니스 영어 전문 강사입니다.
 
 def _gemini(system: str, user: str) -> str:
     """Gemini API 공통 호출 헬퍼."""
-    client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
+    client = genai.Client(
+        api_key=os.environ.get("GEMINI_API_KEY"),
+        http_options={"api_version": "v1alpha"}
+    )
     response = client.models.generate_content(
         model="gemini-2.5-flash-preview-04-17",
         contents=user,
