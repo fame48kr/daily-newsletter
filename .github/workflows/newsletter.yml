@@ -21,7 +21,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install feedparser google-genai
+        run: pip install feedparser requests
 
       - name: Generate newsletter
         env:
