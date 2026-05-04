@@ -153,8 +153,8 @@ VOCAB_PROMPT = """당신은 비즈니스 영어 전문 강사입니다.
 {"vocabulary": [{"word": "tariff", "type": "n.", "meaning_en": "a tax on imported goods", "meaning_ko": "관세", "example": "The new tariff on apparel raised prices."}]}"""
 
 
-GEMINI_MODEL = "gemini-1.5-flash-latest"
-GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+GEMINI_MODEL = "gemini-1.5-flash"
+GEMINI_URL = "https://generativelanguage.googleapis.com/v1/models/{model}:generateContent"
 
 
 def _gemini(system: str, user: str) -> str:
