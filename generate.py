@@ -7,7 +7,8 @@ Daily Newsletter Generator
 """
 
 import feedparser
-import google.generativeai as genai
+from google import genai
+from google.genai import types
 import json
 import os
 import re
@@ -155,12 +156,15 @@ VOCAB_PROMPT = """당신은 비즈니스 영어 전문 강사입니다.
 
 def _gemini(system: str, user: str) -> str:
     """Gemini API 공통 호출 헬퍼."""
-    genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
-    model = genai.GenerativeModel(
-        model_name="gemini-1.5-flash",
-        system_instruction=system,
+    client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
+    response = client.models.generate_content(
+        model="gemini-2.0-flash",
+        contents=user,
+        config=types.GenerateContentConfig(
+            system_instruction=system,
+            temperature=0.3,
+        )
     )
-    response = model.generate_content(user)
     raw = response.text.strip()
     raw = re.sub(r"^```(?:json)?\s*", "", raw)
     raw = re.sub(r"\s*```$", "", raw)
