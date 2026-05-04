@@ -7,7 +7,7 @@ Daily Newsletter Generator
 """
 
 import feedparser
-import anthropic
+import google.generativeai as genai
 import json
 import os
 import re
@@ -153,30 +153,34 @@ VOCAB_PROMPT = """당신은 비즈니스 영어 전문 강사입니다.
 {"vocabulary": [{"word": "tariff", "type": "n.", "meaning_en": "a tax on imported goods", "meaning_ko": "관세", "example": "The new tariff on apparel raised prices."}]}"""
 
 
+def _gemini(system: str, user: str) -> str:
+    """Gemini API 공통 호출 헬퍼."""
+    genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
+    model = genai.GenerativeModel(
+        model_name="gemini-1.5-flash",
+        system_instruction=system,
+    )
+    response = model.generate_content(user)
+    raw = response.text.strip()
+    raw = re.sub(r"^```(?:json)?\s*", "", raw)
+    raw = re.sub(r"\s*```$", "", raw)
+    return raw.strip()
+
+
 def generate_vocabulary(articles: list[dict]) -> list[dict]:
     """해외 기사에서 핵심 단어/숙어 20개를 추출합니다."""
-    # 영문 기사만 필터링
     en_articles = [a for a in articles if a.get("lang") == "en"]
     if not en_articles:
         return []
 
-    client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
     text = "\n\n".join(
         f"[{a['source']}] {a['title']}\n{a.get('summary', '')}"
         for a in en_articles[:15]
     )
-
     try:
-        message = client.messages.create(
-            model="claude-opus-4-5",
-            max_tokens=2048,
-            system=VOCAB_PROMPT,
-            messages=[{"role": "user", "content": text}]
-        )
-        raw = message.content[0].text.strip()
-        raw = re.sub(r"^```(?:json)?\s*", "", raw)
-        raw = re.sub(r"\s*```$", "", raw)
-        result = json.loads(raw.strip())
+        raw = _gemini(VOCAB_PROMPT, text)
+        print(f"  Vocab 응답 미리보기: {raw[:80]}")
+        result = json.loads(raw)
         vocab = result.get("vocabulary", [])
         print(f"  ✓ 단어장 생성 완료: {len(vocab)}개")
         return vocab
@@ -186,33 +190,19 @@ def generate_vocabulary(articles: list[dict]) -> list[dict]:
 
 
 def summarize_articles(articles: list[dict]) -> list[dict]:
-    """Claude API로 기사를 요약하고 중요도를 분류합니다."""
+    """Gemini API로 기사를 요약하고 중요도를 분류합니다."""
     if not articles:
         return []
 
-    client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
-
-    # 기사 목록 텍스트 구성
     articles_text = ""
     for i, a in enumerate(articles):
         articles_text += f"\n[{i}] 출처: {a['source']} | 제목: {a['title']}\n내용: {a['summary']}\n"
 
     try:
-        message = client.messages.create(
-            model="claude-opus-4-5",
-            max_tokens=4096,
-            system=SYSTEM_PROMPT,
-            messages=[{"role": "user", "content": articles_text}]
-        )
-        raw = message.content[0].text.strip()
-        # 마크다운 코드블록 제거 (```json ... ``` 형태로 올 때)
-        raw = re.sub(r"^```(?:json)?\s*", "", raw)
-        raw = re.sub(r"\s*```$", "", raw)
-        raw = raw.strip()
+        raw = _gemini(SYSTEM_PROMPT, articles_text)
         print(f"  AI 응답 미리보기: {raw[:100]}")
         result = json.loads(raw)
 
-        # AI 결과를 원본 기사에 병합
         enriched = []
         for item in result.get("articles", []):
             idx = item["id"]
@@ -223,7 +213,6 @@ def summarize_articles(articles: list[dict]) -> list[dict]:
         return enriched
     except Exception as e:
         print(f"  ✗ AI 요약 오류: {e}")
-        # 폴백: 중요도 없이 원본 반환
         for a in articles:
             a["importance"] = "Medium"
             a["summary_ko"] = a["summary"]
